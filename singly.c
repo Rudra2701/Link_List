@@ -1,5 +1,9 @@
 #include <stdlib.h>
-
+struct node {
+    void* data;
+    struct node* next;
+};
+typedef struct node node;
 /**/
 void insertl(node* head,void* val) {
     node* temp;
@@ -28,17 +32,18 @@ node* deletef(node* head) {
 }
 void insertm(node* head,void* val,int index) {
     int i=0;
-    node* temp, ptr;
-    ptr->data=val
+    node *temp, *ptr;
+    ptr->data=val;
     for (temp=head;i==index-1;i++) {temp=temp->next;}
     ptr->next=temp->next;
     temp->next=ptr;
 
 }
 void deletem(node* head,int index) {
-    node* temp,ptr;
+    int i=0;
+    node *temp, *ptr;
     for (temp=head;i==index-1;i++) {temp=temp->next;}
     ptr=temp->next;
-    temp->next=temp->next->next
+    temp->next=temp->next->next;
     free(ptr);
 }
