@@ -8,24 +8,32 @@ typedef struct node node;
 void insertl(node* head,void* val) {
     node* temp;
     node* ptr=(node*)malloc(sizeof(node));
-    for(temp=head;temp->next!=NULL;temp=temp->next);
+    for(temp=head;temp->next!=head;temp=temp->next);
     temp->next=ptr;
-    ptr->next=NULL;
+    ptr->next=head;
     ptr->data=val;
 }   
 void deletel(node * head) {
     node* temp;
-    if (head == NULL || head->next == NULL) return;
-    for(temp=head;temp->next->next!=NULL;temp=temp->next);
+    if (head == NULL || head->next == head) return;
+    for(temp=head;temp->next->next!=head;temp=temp->next);
     free(temp->next);
 
 }
-void insertf(node* head,void* val) {
+node* insertf(node* head,void* val) {
+    node *last;
     node* ptr=(node*)malloc(sizeof(node));
+    for(last=head;last->next!=head;last=last->next);
+    last->next= ptr
     ptr->next=head;
     ptr->data=val;
+    return ptr;
 }
 node* deletef(node* head) {
+    node *temp, *last;
+    if (head == NULL || head->next == head) return;
+    for(last=head;last->next!=head;last=last->next);
+    last->next=head->next
     node* temp=head->next;
     free(head);
     return head;
@@ -37,7 +45,6 @@ void insertm(node* head,void* val,int index) {
     for (temp=head;i==index-1;i++) {temp=temp->next;}
     ptr->next=temp->next;
     temp->next=ptr;
-
 }
 void deletem(node* head,int index) {
     int i=0;

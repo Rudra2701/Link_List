@@ -1,7 +1,5 @@
-#ifndef SINGLYLINKED_H
-#define SINGLYLINKED_H
-
-
+#ifndef CIRCULARLINKED_H
+#define CIRCULARLINKED_H
 
 void insertl(node* head,void* val);
 void deletel(node* head);

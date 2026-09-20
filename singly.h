@@ -1,8 +1,6 @@
 #ifndef SINGLYLINKED_H
 #define SINGLYLINKED_H
 
-
-
 void insertl(node* head,void* val);
 void deletel(node* head);
 node* insertf(node* head,void* val);

@@ -20,10 +20,11 @@ void deletel(node * head) {
     free(temp->next);
 
 }
-void insertf(node* head,void* val) {
+node* insertf(node* head,void* val) {
     node* ptr=(node*)malloc(sizeof(node));
     ptr->next=head;
     ptr->data=val;
+    return ptr;
 }
 node* deletef(node* head) {
     node* temp=head->next;
