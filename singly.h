@@ -1,11 +1,17 @@
 #ifndef SINGLYLINKED_H
 #define SINGLYLINKED_H
 
-void insertl(node* head,void* val);
+struct node {
+    void* data;
+    struct node* next;
+};
+typedef struct node node;
+
+void insertl(node* head,int val);
 void deletel(node* head);
-node* insertf(node* head,void* val);
+node* insertf(node* head,int val);
 node* deletef(node* head);
-void insertm(node* head,void* val,int index);
+void insertm(node* head,int val,int index);
 void deletem(node* head,int index);
 #endif
  /* Copyright (C) 2026  Rudra Shivhare

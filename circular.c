@@ -5,53 +5,62 @@ struct node {
 };
 typedef struct node node;
 /**/
-void insertl(node* head,void* val) {
+void insertl(node* head,int val) {
+    if (head == NULL) return;
     node* temp;
     node* ptr=(node*)malloc(sizeof(node));
     for(temp=head;temp->next!=head;temp=temp->next);
     temp->next=ptr;
     ptr->next=head;
-    ptr->data=val;
+    ptr->data=malloc(sizeof(val));
+    *(int*)(ptr->data)=val;
 }   
 void deletel(node * head) {
     node* temp;
     if (head == NULL || head->next == head) return;
     for(temp=head;temp->next->next!=head;temp=temp->next);
-    free(temp->next);
+    node* del = temp->next;
+    temp->next = head;
+    free(del->data);
+    free(del);
 
 }
-node* insertf(node* head,void* val) {
+node* insertf(node* head,int val) {
     node *last;
     node* ptr=(node*)malloc(sizeof(node));
     for(last=head;last->next!=head;last=last->next);
-    last->next= ptr
+    last->next= ptr;
     ptr->next=head;
-    ptr->data=val;
+    ptr->data=malloc(sizeof(val));
+    *(int*)(ptr->data)=val;
     return ptr;
 }
 node* deletef(node* head) {
     node *temp, *last;
-    if (head == NULL || head->next == head) return;
+    if (head == NULL || head->next == head) return head;
     for(last=head;last->next!=head;last=last->next);
-    last->next=head->next
-    node* temp=head->next;
+    last->next=head->next;
+    temp=head->next;
     free(head);
-    return head;
+    return temp;
 }
-void insertm(node* head,void* val,int index) {
+void insertm(node* head,int val,int index) {
     int i=0;
     node *temp, *ptr;
-    ptr->data=val;
-    for (temp=head;i==index-1;i++) {temp=temp->next;}
+    ptr=malloc(sizeof(node));
+    ptr->data=malloc(sizeof(val));
+    *(int*)(ptr->data)=val;
+    for (temp=head;i<index-1;i++) {temp=temp->next;}
     ptr->next=temp->next;
     temp->next=ptr;
 }
 void deletem(node* head,int index) {
     int i=0;
     node *temp, *ptr;
-    for (temp=head;i==index-1;i++) {temp=temp->next;}
+    for (temp=head;i<index-1;i++) {temp=temp->next;}
     ptr=temp->next;
     temp->next=temp->next->next;
+    free(ptr->data);
     free(ptr);
 }
 /* Copyright (C) 2026  Rudra Shivhare
