@@ -25,6 +25,7 @@ void deletel(node * head) {
     temp->next=NULL;
 }
 node* insertf(node* head,int val) {
+    
     node* ptr=(node*)malloc(sizeof(node));
     ptr->next=head;
     ptr->data=malloc(sizeof(val));
@@ -40,10 +41,9 @@ node* deletef(node* head) {
 void insertm(node* head,int val,int index) {
     int i=0;
     node *temp, *ptr=(node*)malloc(sizeof(node));
-    
     ptr->data=malloc(sizeof(val));
     *(int*)(ptr->data)=val;
-    for (temp=head;i==index-1;i++) {temp=temp->next;}
+    for (temp=head; i < index-1; i++) {temp=temp->next;}
     ptr->next=temp->next;
     temp->next=ptr;
 
