@@ -26,6 +26,13 @@ void deletel(node * head) {
 
 }
 node* insertf(node* head,int val) {
+    if (head == NULL) {
+    node* ptr = malloc(sizeof(node));
+    ptr->data = malloc(sizeof(int));
+    *(int*)ptr->data = val;
+    ptr->next = ptr;
+    return ptr;
+    } 
     node *last;
     node* ptr=(node*)malloc(sizeof(node));
     for(last=head;last->next!=head;last=last->next);
@@ -37,10 +44,16 @@ node* insertf(node* head,int val) {
 }
 node* deletef(node* head) {
     node *temp, *last;
-    if (head == NULL || head->next == head) return head;
+    if (head == NULL) return head;
+    if (head->next==head) {
+        free(head->data);
+        free(head);
+        return NULL;
+    }
     for(last=head;last->next!=head;last=last->next);
     last->next=head->next;
     temp=head->next;
+    free(head->data);
     free(head);
     return temp;
 }
